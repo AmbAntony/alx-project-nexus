@@ -69,7 +69,6 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     <div className="bg-white py-4 sticky top-0 z-30 border-b border-gray-200">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between gap-4">
-          {/* Left side - Filters (Desktop only) */}
           <div className="flex items-center gap-5 flex-1">
             <div className="flex items-center gap-5">
               {allFilter && (
@@ -83,13 +82,11 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
 
           {/* Right side - Filter and Sort */}
           <div className="flex items-center gap-3">
-            {/* Filter Button */}
             <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 text-sm font-medium">
               <Filter className="w-4 h-4" />
               Filter
             </button>
 
-            {/* Sort Dropdown */}
             <div className="relative">
               <button
                 onClick={toggleSortDropdown}
@@ -127,7 +124,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
         </div>
       </div>
 
-      {/* Overlay for dropdowns */}
+
       {isSortDropdownOpen && (
         <div
           className="fixed inset-0 z-30"
@@ -138,13 +135,11 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
   );
 };
 
-// Demo Component showing usage
 const HeroFilterDemo: React.FC = () => {
   const [filters, setFilters] = useState<FilterOption[]>([
     { id: 'all', label: 'All', active: true },
     { id: 'shirts', label: 'Shirts', active: false },
-    { id: 'jeans', label: 'Jeans', active: false },
-    { id: 'polos', label: 'Polos', active: false },
+    { id: 'pants', label: 'Pants', active: false },
     { id: 'accessories', label: 'Accessories', active: false },
   ]);
 

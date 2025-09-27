@@ -2,7 +2,24 @@ import React from "react";
 import Link from 'next/link';
 import { FaRegUser, FaHeart, FaShoppingCart, FaAffiliatetheme  } from 'react-icons/fa'; // You'll need to install it: npm install react-icons
 
-const Header: React.FC = () => {
+interface CartItem {
+  product: {
+    name: string;
+    price: number;
+    image: string;
+    rating: number;
+    category: string;
+  };
+  quantity: number;
+}
+
+interface HeaderProps {
+  cart?: CartItem[];
+  setCartOpen?: (open: boolean) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ cart = [], setCartOpen }) => {
+  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   return (
     <header>
       {/* top info bar */}
@@ -45,9 +62,9 @@ const Header: React.FC = () => {
             <FaHeart className="text-gray-800 hover:text-gray-600" />
             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">0</span>
           </div>
-          <div className="relative cursor-pointer">
+          <div className="relative cursor-pointer" onClick={() => setCartOpen && setCartOpen(true)}>
             <FaShoppingCart className="text-gray-800 hover:text-gray-600" />
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">0</span>
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">{cartCount}</span>
           </div>
         </div>
       </div>

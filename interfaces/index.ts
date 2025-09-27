@@ -30,5 +30,5 @@ export interface ProductProps {
   rating: number;
   price: number;
   image: string;
- 
+  category: string;
 }
