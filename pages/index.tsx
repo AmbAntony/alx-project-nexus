@@ -1,9 +1,9 @@
 
 import React from "react";
-import { HERO_BACKGROUND } from "@/constants";
+import { BACKGROUND } from "@/constants";
 import FilterSection from "@/components/filters/FilterSection";
-import PropertyCard from "@/components/listings/PropertyCard";
-import { PROPERTYLISTINGSAMPLE } from "@/constants";
+import ProductCard from "@/components/listings/ProductCard";
+import { PRODUCTSAMPLELIST } from "@/constants";
 
 
 
@@ -12,7 +12,7 @@ const HomePage = () => {
     <>
       {/* Hero Section */}
       <section className="relative bg-cover bg-center h-[60vh] flex items-center justify-center text-center text-white"
-        style={{ backgroundImage: `url(${HERO_BACKGROUND})` }}
+  style={{ backgroundImage: `url(${BACKGROUND})` }}
       >
 
         {/* Hero Content */}
@@ -31,8 +31,8 @@ const HomePage = () => {
 
        {/* Listing Section */}
       <section className="max-w-7xl mx-auto px-4 py-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {PROPERTYLISTINGSAMPLE.map((property, index) => (
-          <PropertyCard key={index} property={property} />
+  {PRODUCTSAMPLELIST.map((product, index) => (
+          <ProductCard key={index} product={product} />
         ))}
       </section>
     </>

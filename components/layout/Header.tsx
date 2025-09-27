@@ -54,12 +54,12 @@ const Header: React.FC = () => {
 
       {/* Sub-navigation Bar */}
       <nav className="bg-white border-y border-gray-300">
-        <div className="container mx-auto px-2 flex justify-center space-x-18 text-sm font-bold">
-          <a href="#" className="py-4 text-gray-700 hover:text-gray-900 font-medium">Home</a>
-          <a href="#" className="py-4 text-gray-700 hover:text-gray-900 font-medium">Shop</a>
-          <a href="#" className="py-4 text-gray-700 hover:text-gray-900 font-medium">Brands</a>
-          <a href="#" className="py-4 text-gray-700 hover:text-gray-900 font-medium">Mens</a>
-          <a href="#" className="py-4 text-gray-700 hover:text-gray-900 font-medium">Trending</a>
+        <div className="container mx-auto px-2 flex justify-center space-x-18 text-base font-bold">
+          <a href="#" className="py-4 text-gray-700 hover:text-gray-900 font-medium font-serif">Home</a>
+          <a href="#" className="py-4 text-gray-700 hover:text-gray-900 font-medium font-serif">Shop</a>
+          <a href="#" className="py-4 text-gray-700 hover:text-gray-900 font-medium font-serif">Brands</a>
+          <a href="#" className="py-4 text-gray-700 hover:text-gray-900 font-medium font-serif">Mens</a>
+          <a href="#" className="py-4 text-gray-700 hover:text-gray-900 font-medium font-serif">Trending</a>
         </div>
       </nav>
     </header>

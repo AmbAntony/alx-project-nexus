@@ -16,8 +16,6 @@ alxafrica.com
 - Create reusable components such as **Card** and **Button**.
 - Set up **TypeScript interfaces** to ensure maintainable and type-safe code.
 - Manage assets under a central public folder.
-- Understand how PLDs (Project Learning Deliveries) work in step-by-step format.
-
 
 ## Learning Objectives
 

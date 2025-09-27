@@ -1,9 +1,9 @@
-import { PropertyProps } from "@/interfaces";
+import { ProductProps } from "@/interfaces";
 
 
-export const HERO_BACKGROUND = "/assets/images/Image_1.png";
+export const BACKGROUND = "/assets/images/Image_1.png";
 
-export const PROPERTYLISTINGSAMPLE: PropertyProps []  =  [
+export const PRODUCTSAMPLELIST: ProductProps []  =  [
 {
   name: "Marini Sorrento High Waisted Double Pleated Pants",
   rating: 4.89,
@@ -35,10 +35,10 @@ export const PROPERTYLISTINGSAMPLE: PropertyProps []  =  [
   image: "/assets/images/Image_18.jpeg"
 },
 {
-  name: "Marini Classic Bow Tie LD011",
+  name: "Marini Classic Polo LD011",
   rating: 4.95,
   price: 5000,
-  image: "/assets/images/Image_7.jpeg"
+  image: "/assets/images/Image_23.jpeg"
 },
 {
   name: "Marini Vara Belt Black",

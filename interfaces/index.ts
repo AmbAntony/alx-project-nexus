@@ -25,7 +25,7 @@ export interface OffersProps {
   occupants: string;
 }
 
-export interface PropertyProps {
+export interface ProductProps {
   name: string;
   rating: number;
   price: number;
