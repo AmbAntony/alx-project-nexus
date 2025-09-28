@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { BACKGROUND } from "@/constants";
 import { FilterComponent, FilterOption } from "@/components/filters/FilterSection";
@@ -6,15 +5,12 @@ import ProductCard from "@/components/listings/ProductCard";
 import Link from "next/link";
 import { PRODUCTSAMPLELIST } from "@/constants";
 
-
-
-
 const initialFilters: FilterOption[] = [
-  { id: 'all', label: 'All', active: true },
-  { id: 'shirts', label: 'Shirts', active: false },
-  { id: 'pants', label: 'Pants', active: false },
-  { id: 'polos', label: 'Polos', active: false },
-  { id: 'accessories', label: 'Accessories', active: false },
+  { id: "all", label: "All", active: true },
+  { id: "shirts", label: "Shirts", active: false },
+  { id: "pants", label: "Pants", active: false },
+  { id: "polos", label: "Polos", active: false },
+  { id: "accessories", label: "Accessories", active: false },
 ];
 
 const HomePage = () => {
