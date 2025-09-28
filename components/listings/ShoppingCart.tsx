@@ -1,17 +1,13 @@
 import React from "react";
-import { ProductProps } from "@/interfaces";
+import { useCart } from "@/context/CartContext";
 
-interface ShoppingCartProps {
-  cart: { product: ProductProps; quantity: number }[];
-  onClose: () => void;
-}
-
-const ShoppingCart: React.FC<ShoppingCartProps> = ({ cart, onClose }) => {
+const ShoppingCart: React.FC = () => {
+  const { cart, setCartOpen } = useCart();
   const totalPrice = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
 
   return (
     <div className="fixed top-0 right-0 w-96 h-full bg-white shadow-lg z-50 p-6 flex flex-col">
-      <button className="self-end mb-4 text-gray-600 hover:text-black" onClick={onClose}>
+      <button className="self-end mb-4 text-gray-600 hover:text-black" onClick={() => setCartOpen(false)}>
         Close
       </button>
       <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
