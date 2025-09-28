@@ -7,8 +7,10 @@ interface ProductDisplayProps {
   addToCart?: (product: ProductProps) => void;
 }
 
-
-const ProductDisplay: React.FC<ProductDisplayProps> = ({ product, addToCart }) => {
+const ProductDisplay: React.FC<ProductDisplayProps> = ({
+  product,
+  addToCart,
+}) => {
   const [quantity, setQuantity] = useState(0);
   const handleAddToCart = () => {
     if (addToCart && quantity > 0) {
@@ -52,7 +54,9 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ product, addToCart }) =
           <span className="text-yellow-500 text-lg mr-2">★</span>
           <span className="text-lg font-medium">{product.rating}</span>
         </div>
-        <span className="text-red-500 font-bold text-2xl mb-4">${product.price}</span>
+        <span className="text-red-500 font-bold text-2xl mb-4">
+          ${product.price}
+        </span>
         <div className="flex items-center gap-4 mt-4">
           <button
             className="px-4 py-2 rounded bg-gray-200 text-gray-700 font-bold text-xl"
@@ -77,7 +81,9 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ product, addToCart }) =
             <ul className="mb-2">
               <li className="flex justify-between items-center py-1 border-b text-sm">
                 <span>{product.name}</span>
-                <span className="text-red-500 font-semibold">${product.price} x {quantity}</span>
+                <span className="text-red-500 font-semibold">
+                  ${product.price} x {quantity}
+                </span>
               </li>
             </ul>
             <div className="font-bold text-xl mb-4">Total: ${totalPrice}</div>

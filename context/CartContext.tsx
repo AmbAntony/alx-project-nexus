@@ -27,8 +27,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartOpen, setCartOpen] = useState(false);
 
   const addToCart = (product: ProductProps) => {
-    setCart(prev => {
-      const idx = prev.findIndex(item => item.product.name === product.name);
+    setCart((prev) => {
+      const idx = prev.findIndex((item) => item.product.name === product.name);
       if (idx > -1) {
         if (prev[idx].quantity < 3) {
           const updated = [...prev];
@@ -42,8 +42,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeFromCart = (product: ProductProps) => {
-    setCart(prev => {
-      const idx = prev.findIndex(item => item.product.name === product.name);
+    setCart((prev) => {
+      const idx = prev.findIndex((item) => item.product.name === product.name);
       if (idx > -1) {
         const updated = [...prev];
         if (updated[idx].quantity > 1) {
@@ -59,7 +59,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, setCartOpen, cartOpen }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, setCartOpen, cartOpen }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -6,7 +6,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary";
 }
 
-const Button: React.FC<ButtonProps> = ({ variant = "primary", className, ...props }) => {
+const Button: React.FC<ButtonProps> = ({
+  variant = "primary",
+  className,
+  ...props
+}) => {
   const base = "px-4 py-2 rounded font-semibold transition-all";
   const variants = {
     primary: "bg-blue-600 text-white hover:bg-blue-700",
@@ -14,10 +18,7 @@ const Button: React.FC<ButtonProps> = ({ variant = "primary", className, ...prop
   };
 
   return (
-    <button
-      className={clsx(base, variants[variant], className)}
-      {...props}
-    />
+    <button className={clsx(base, variants[variant], className)} {...props} />
   );
 };
 

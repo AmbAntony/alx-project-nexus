@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { Filter, ChevronDown } from 'lucide-react';
+import React, { useState } from "react";
+import { Filter, ChevronDown } from "lucide-react";
 
 // Types
 interface FilterOption {
@@ -35,8 +35,8 @@ const Pill: React.FC<PillProps> = ({ filter, onClick }) => {
       onClick={() => onClick(filter.id)}
       className={`px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
         filter.active
-          ? 'bg-[#34967C] text-white'
-          : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+          ? "bg-[#34967C] text-white"
+          : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
       }`}
     >
       {filter.label}
@@ -49,18 +49,18 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
   filters,
   sortBy,
   onFilterChange,
-  onSortChange
+  onSortChange,
 }) => {
   const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
 
-  const allFilter = filters.find(f => f.id === 'all');
-  const otherFilters = filters.filter(f => f.id !== 'all');
+  const allFilter = filters.find((f) => f.id === "all");
+  const otherFilters = filters.filter((f) => f.id !== "all");
 
   const sortOptions = [
-    { value: 'highest-price', label: 'Highest Price' },
-    { value: 'lowest-price', label: 'Lowest Price' },
-    { value: 'rating', label: 'Rating' },
-    { value: 'popularity', label: 'Popularity' }
+    { value: "highest-price", label: "Highest Price" },
+    { value: "lowest-price", label: "Lowest Price" },
+    { value: "rating", label: "Rating" },
+    { value: "popularity", label: "Popularity" },
   ];
 
   const toggleSortDropdown = () => setIsSortDropdownOpen(!isSortDropdownOpen);
@@ -75,7 +75,11 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                 <Pill filter={allFilter} onClick={onFilterChange} />
               )}
               {otherFilters.map((filter) => (
-                <Pill key={filter.id} filter={filter} onClick={onFilterChange} />
+                <Pill
+                  key={filter.id}
+                  filter={filter}
+                  onClick={onFilterChange}
+                />
               ))}
             </div>
           </div>
@@ -94,11 +98,14 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
               >
                 <span className="hidden sm:inline">Sort by:</span>
                 <span className="font-medium">
-                  {sortOptions.find(opt => opt.value === sortBy)?.label || 'Highest Price'}
+                  {sortOptions.find((opt) => opt.value === sortBy)?.label ||
+                    "Highest Price"}
                 </span>
-                <ChevronDown className={`w-4 h-4 transition-transform ${isSortDropdownOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform ${isSortDropdownOpen ? "rotate-180" : ""}`}
+                />
               </button>
-              
+
               {isSortDropdownOpen && (
                 <div className="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg min-w-[160px] z-40">
                   <div className="py-2">
@@ -110,7 +117,9 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                           setIsSortDropdownOpen(false);
                         }}
                         className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 ${
-                          sortBy === option.value ? 'text-[#34967C] font-medium' : 'text-gray-700'
+                          sortBy === option.value
+                            ? "text-[#34967C] font-medium"
+                            : "text-gray-700"
                         }`}
                       >
                         {option.label}
@@ -124,7 +133,6 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
         </div>
       </div>
 
-
       {isSortDropdownOpen && (
         <div
           className="fixed inset-0 z-30"
@@ -137,20 +145,20 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
 
 const HeroFilterDemo: React.FC = () => {
   const [filters, setFilters] = useState<FilterOption[]>([
-    { id: 'all', label: 'All', active: true },
-    { id: 'shirts', label: 'Shirts', active: false },
-    { id: 'pants', label: 'Pants', active: false },
-    { id: 'accessories', label: 'Accessories', active: false },
+    { id: "all", label: "All", active: true },
+    { id: "shirts", label: "Shirts", active: false },
+    { id: "pants", label: "Pants", active: false },
+    { id: "accessories", label: "Accessories", active: false },
   ]);
 
-  const [sortBy, setSortBy] = useState('highest-price');
+  const [sortBy, setSortBy] = useState("highest-price");
 
   const handleFilterChange = (filterId: string) => {
-    setFilters(prevFilters =>
-      prevFilters.map(filter => ({
+    setFilters((prevFilters) =>
+      prevFilters.map((filter) => ({
         ...filter,
-        active: filter.id === filterId
-      }))
+        active: filter.id === filterId,
+      })),
     );
   };
 
@@ -159,9 +167,7 @@ const HeroFilterDemo: React.FC = () => {
   };
 
   return (
-   
-       <div className="container mx-auto bg-gray-50">
-     
+    <div className="container mx-auto bg-gray-50">
       <FilterComponent
         filters={filters}
         sortBy={sortBy}

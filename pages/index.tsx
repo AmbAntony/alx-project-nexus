@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { BACKGROUND } from "@/constants";
-import { FilterComponent, FilterOption } from "@/components/filters/FilterSection";
+import {
+  FilterComponent,
+  FilterOption,
+} from "@/components/filters/FilterSection";
 import ProductCard from "@/components/listings/ProductCard";
 import Link from "next/link";
 import { PRODUCTSAMPLELIST } from "@/constants";
@@ -15,15 +18,15 @@ const initialFilters: FilterOption[] = [
 
 const HomePage = () => {
   const [filters, setFilters] = useState<FilterOption[]>(initialFilters);
-  const [sortBy, setSortBy] = useState('highest-price');
+  const [sortBy, setSortBy] = useState("highest-price");
 
   // Handle filter change
   const handleFilterChange = (filterId: string) => {
-    setFilters(prevFilters =>
-      prevFilters.map(filter => ({
+    setFilters((prevFilters) =>
+      prevFilters.map((filter) => ({
         ...filter,
-        active: filter.id === filterId
-      }))
+        active: filter.id === filterId,
+      })),
     );
   };
 
@@ -33,29 +36,32 @@ const HomePage = () => {
   };
 
   // Get active filter
-  const activeFilter = filters.find(f => f.active) || filters[0];
+  const activeFilter = filters.find((f) => f.active) || filters[0];
 
   // Filter products
   let filteredProducts = PRODUCTSAMPLELIST;
-  if (activeFilter.id !== 'all') {
-    filteredProducts = PRODUCTSAMPLELIST.filter(product =>
-      product.category?.toLowerCase() === activeFilter.id
+  if (activeFilter.id !== "all") {
+    filteredProducts = PRODUCTSAMPLELIST.filter(
+      (product) => product.category?.toLowerCase() === activeFilter.id,
     );
   }
 
   // Sort products
-  if (sortBy === 'highest-price') {
+  if (sortBy === "highest-price") {
     filteredProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
-  } else if (sortBy === 'lowest-price') {
+  } else if (sortBy === "lowest-price") {
     filteredProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
-  } else if (sortBy === 'rating') {
-    filteredProducts = [...filteredProducts].sort((a, b) => b.rating - a.rating);
+  } else if (sortBy === "rating") {
+    filteredProducts = [...filteredProducts].sort(
+      (a, b) => b.rating - a.rating,
+    );
   } // Add more sort logic if needed
 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-cover bg-center h-[60vh] flex items-center justify-center text-center text-white"
+      <section
+        className="relative bg-cover bg-center h-[60vh] flex items-center justify-center text-center text-white"
         style={{ backgroundImage: `url(${BACKGROUND})` }}
       >
         {/* Hero Content */}
@@ -63,9 +69,7 @@ const HomePage = () => {
           <h1 className="text-6xl md:text-5xl mb-4 font-serif">
             SUMMER SALE 2025
           </h1>
-          <p className="text-lg md:text-xl">
-            Up to 60% off countrywide
-          </p>
+          <p className="text-lg md:text-xl">Up to 60% off countrywide</p>
         </div>
       </section>
 
@@ -82,7 +86,11 @@ const HomePage = () => {
       {/* Listing Section */}
       <section className="max-w-7xl mx-auto px-4 py-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredProducts.map((product, index) => (
-          <Link key={index} href={`/product/${index}`} style={{ textDecoration: 'none' }}>
+          <Link
+            key={index}
+            href={`/product/${index}`}
+            style={{ textDecoration: "none" }}
+          >
             <ProductCard product={product} />
           </Link>
         ))}
