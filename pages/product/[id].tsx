@@ -29,7 +29,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = (props) => {
     return <div className="text-center mt-10">Product not found.</div>;
   }
 
-  return <ProductDisplay product={product} addToCart={props.addToCart} />;
+  return <ProductDisplay product={product} />;
 };
 
 export default ProductDetailPage;
