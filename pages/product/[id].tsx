@@ -20,8 +20,10 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = (props) => {
   const router = useRouter();
   const { id } = router.query;
 
-  // Find product by index (for demo; ideally use a unique id)
-  const product = PRODUCTSAMPLELIST[Number(id)];
+  // Find product by name (decode URI component)
+  const product = PRODUCTSAMPLELIST.find(
+    (p) => p.name === decodeURIComponent(id as string)
+  );
 
   if (!product) {
     return <div className="text-center mt-10">Product not found.</div>;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   FaRegUser,
@@ -6,25 +6,17 @@ import {
   FaShoppingCart,
   FaAffiliatetheme,
 } from "react-icons/fa";
+import { useRouter } from "next/router";
+import { useCart } from "@/context/CartContext";
 
-interface CartItem {
-  product: {
-    name: string;
-    price: number;
-    image: string;
-    rating: number;
-    category: string;
-  };
-  quantity: number;
-}
-
-interface HeaderProps {
-  cart?: CartItem[];
-  setCartOpen?: (open: boolean) => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ cart = [], setCartOpen }) => {
+const Header: React.FC = () => {
+  const { cart, setCartOpen } = useCart();
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <header>
       {/* top info bar */}
@@ -92,12 +84,16 @@ const Header: React.FC<HeaderProps> = ({ cart = [], setCartOpen }) => {
           >
             Home
           </Link>
-          <Link
-            href="/shop"
-            className="py-4 text-gray-700 hover:text-gray-900 font-medium font-serif"
-          >
-            Shop
-          </Link>
+            {mounted && router.pathname === "/shop" ? (
+              <span className="py-4 text-gray-700 font-medium font-serif">Shop</span>
+            ) : (
+              <Link
+                href="/shop"
+                className="py-4 text-gray-700 hover:text-gray-900 font-medium font-serif"
+              >
+                Shop
+              </Link>
+            )}
           <Link
             href="/brands"
             className="py-4 text-gray-700 hover:text-gray-900 font-medium font-serif"

@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { ProductProps } from "@/interfaces";
 import Image from "next/image";
+import { useCart } from "@/context/CartContext";
 
 interface ProductDisplayProps {
   product: ProductProps;
-  addToCart?: (product: ProductProps) => void;
 }
 
-const ProductDisplay: React.FC<ProductDisplayProps> = ({
-  product,
-  addToCart,
-}) => {
+const ProductDisplay: React.FC<ProductDisplayProps> = ({ product }) => {
+  const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(0);
   const handleAddToCart = () => {
-    if (addToCart && quantity > 0) {
+    if (quantity > 0) {
       for (let i = 0; i < quantity; i++) {
         addToCart(product);
       }

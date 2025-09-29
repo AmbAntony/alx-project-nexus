@@ -26,6 +26,7 @@ export interface OffersProps {
 }
 
 export interface ProductProps {
+  id: number;
   name: string;
   rating: number;
   price: number;

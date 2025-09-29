@@ -2,7 +2,7 @@ import React from "react";
 import { useCart } from "@/context/CartContext";
 
 const ShoppingCart: React.FC = () => {
-  const { cart, setCartOpen } = useCart();
+  const { cart, setCartOpen, removeFromCart } = useCart();
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
     0,
@@ -32,6 +32,12 @@ const ShoppingCart: React.FC = () => {
               <span className="text-red-500 font-semibold">
                 ${item.product.price * item.quantity}
               </span>
+              <button
+                className="ml-4 px-2 py-1 bg-red-500 text-white rounded text-xs"
+                onClick={() => removeFromCart(item.product)}
+              >
+                Remove
+              </button>
             </li>
           ))}
         </ul>
